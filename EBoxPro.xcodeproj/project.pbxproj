@@ -14,6 +14,7 @@
 		DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE0C2A81B1162E5007384B5 /* Images.xcassets */; };
 		DEE0C2B81B1162E5007384B5 /* EBoxProTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */; };
 		DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C21B1164BD007384B5 /* LoginViewController.m */; };
+		DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		DEE0C2C11B1164BD007384B5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DEE0C2C21B1164BD007384B5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DEE0C2C41B116D33007384B5 /* EBoxPro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EBoxPro-Prefix.pch"; sourceTree = "<group>"; };
+		DEE0C2C51B1173AF007384B5 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EBoxPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				DEE0C2C41B116D33007384B5 /* EBoxPro-Prefix.pch */,
+				DEE0C2C51B1173AF007384B5 /* UIView+Additions.h */,
+				DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */,
 				DEE0C29C1B1162E5007384B5 /* Info.plist */,
 				DEE0C29D1B1162E5007384B5 /* main.m */,
 			);
@@ -280,6 +285,7 @@
 				DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */,
 				DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */,
 				DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */,
+				DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */,
 				DEE0C29E1B1162E5007384B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
