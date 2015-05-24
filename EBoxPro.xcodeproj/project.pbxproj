@@ -42,6 +42,7 @@
 		DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBoxProTests.m; sourceTree = "<group>"; };
 		DEE0C2C11B1164BD007384B5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DEE0C2C21B1164BD007384B5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DEE0C2C41B116D33007384B5 /* EBoxPro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EBoxPro-Prefix.pch"; sourceTree = "<group>"; };
 		F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EBoxPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,6 +111,7 @@
 				DEE0C2A31B1162E5007384B5 /* ViewController.m */,
 				DEE0C2C11B1164BD007384B5 /* LoginViewController.h */,
 				DEE0C2C21B1164BD007384B5 /* LoginViewController.m */,
+				DEE0C2C41B116D33007384B5 /* EBoxPro-Prefix.pch */,
 				DEE0C2A81B1162E5007384B5 /* Images.xcassets */,
 				DEE0C29B1B1162E5007384B5 /* Supporting Files */,
 			);
