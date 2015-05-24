@@ -13,7 +13,6 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 //#include "UIView+Additions.h"
-//#import <AFNetworking.h>
 
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
 
