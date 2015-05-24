@@ -12,6 +12,7 @@
 		DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2A31B1162E5007384B5 /* ViewController.m */; };
 		DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE0C2A81B1162E5007384B5 /* Images.xcassets */; };
 		DEE0C2B81B1162E5007384B5 /* EBoxProTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */; };
+		DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C21B1164BD007384B5 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		DEE0C2B11B1162E5007384B5 /* EBoxProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EBoxProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE0C2B61B1162E5007384B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBoxProTests.m; sourceTree = "<group>"; };
+		DEE0C2C11B1164BD007384B5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DEE0C2C21B1164BD007384B5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 				DEE0C2A01B1162E5007384B5 /* AppDelegate.m */,
 				DEE0C2A21B1162E5007384B5 /* ViewController.h */,
 				DEE0C2A31B1162E5007384B5 /* ViewController.m */,
+				DEE0C2C11B1164BD007384B5 /* LoginViewController.h */,
+				DEE0C2C21B1164BD007384B5 /* LoginViewController.m */,
 				DEE0C2A81B1162E5007384B5 /* Images.xcassets */,
 				DEE0C29B1B1162E5007384B5 /* Supporting Files */,
 			);
@@ -211,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */,
 				DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */,
 				DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */,
 				DEE0C29E1B1162E5007384B5 /* main.m in Sources */,
