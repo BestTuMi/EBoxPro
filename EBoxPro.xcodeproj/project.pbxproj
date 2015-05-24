@@ -15,6 +15,7 @@
 		DEE0C2B81B1162E5007384B5 /* EBoxProTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */; };
 		DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C21B1164BD007384B5 /* LoginViewController.m */; };
 		DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */; };
+		DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		DEE0C2C41B116D33007384B5 /* EBoxPro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EBoxPro-Prefix.pch"; sourceTree = "<group>"; };
 		DEE0C2C51B1173AF007384B5 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBoxNetwork.h; sourceTree = "<group>"; };
+		DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxNetwork.m; sourceTree = "<group>"; };
 		F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EBoxPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +117,8 @@
 				DEE0C2A31B1162E5007384B5 /* ViewController.m */,
 				DEE0C2C11B1164BD007384B5 /* LoginViewController.h */,
 				DEE0C2C21B1164BD007384B5 /* LoginViewController.m */,
+				DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */,
+				DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */,
 				DEE0C2A81B1162E5007384B5 /* Images.xcassets */,
 				DEE0C29B1B1162E5007384B5 /* Supporting Files */,
 			);
@@ -284,6 +289,7 @@
 			files = (
 				DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */,
 				DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */,
+				DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */,
 				DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */,
 				DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */,
 				DEE0C29E1B1162E5007384B5 /* main.m in Sources */,

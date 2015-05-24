@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <SVProgressHUD.h>
+#import "EBoxNetwork.h"
 
 @interface LoginViewController ()
 
@@ -80,9 +81,9 @@
     if (self.navigationController.navigationBarHidden == NO) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
-//    if ([[EBoxNetwork sharedInstance] isStayOnline]) {
-//        [self loginSuccessWithAnimated:NO];
-//    }
+    if ([[EBoxNetwork sharedInstance] isStayOnline]) {
+        [self loginSuccessWithAnimated:NO];
+    }
 }
 
 - (void)loginClicked:(UIButton *)sender{
