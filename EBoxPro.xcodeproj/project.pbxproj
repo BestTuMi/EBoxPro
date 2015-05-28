@@ -17,6 +17,7 @@
 		DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */; };
 		DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */; };
 		DEF556F31B1700D6009DD98F /* FileTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F21B1700D6009DD98F /* FileTabBarController.m */; };
+		DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F51B17075D009DD98F /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxNetwork.m; sourceTree = "<group>"; };
 		DEF556F11B1700D6009DD98F /* FileTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTabBarController.h; sourceTree = "<group>"; };
 		DEF556F21B1700D6009DD98F /* FileTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTabBarController.m; sourceTree = "<group>"; };
+		DEF556F41B17075D009DD98F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		DEF556F51B17075D009DD98F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EBoxPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,6 +127,8 @@
 				DEF556F21B1700D6009DD98F /* FileTabBarController.m */,
 				DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */,
 				DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */,
+				DEF556F41B17075D009DD98F /* RegisterViewController.h */,
+				DEF556F51B17075D009DD98F /* RegisterViewController.m */,
 				DEE0C2A81B1162E5007384B5 /* Images.xcassets */,
 				DEE0C29B1B1162E5007384B5 /* Supporting Files */,
 			);
@@ -299,6 +304,7 @@
 				DEF556F31B1700D6009DD98F /* FileTabBarController.m in Sources */,
 				DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */,
 				DEE0C29E1B1162E5007384B5 /* main.m in Sources */,
+				DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
