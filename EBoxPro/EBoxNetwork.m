@@ -22,6 +22,28 @@
 
 @implementation EBoxNetwork
 
+- (instancetype)init{
+    self = [super init];
+    if(self){
+        self.isLogin = NO;
+        self.isRegister = NO;
+        self.isGetList = NO;
+        self.isUploadFile = NO;
+        self.isDownloading = NO;
+        
+        self.userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+        self.session = [[NSUserDefaults standardUserDefaults] objectForKey:@"session"];
+    }
+    return self;
+}
+
+- (void)login{
+    if (self.session.length && self.userName.length) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.userName forKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.session forKey:@"session"];
+    }
+}
+
 + (EBoxNetwork *)sharedInstance{
     static EBoxNetwork *sharedNetwork;
     static dispatch_once_t onceToken;
@@ -67,15 +89,29 @@
     }];
 }
 
-- (void)login{
-    if(self.session.length && self.userName.length){
-        [[NSUserDefaults standardUserDefaults] setObject:self.userName forKey:@"username"];
-        [[NSUserDefaults standardUserDefaults] setObject:self.session forKey:@"session"];
-    }
-}
-
 - (void)registerWithUserName:(NSString *)theUserName password:(NSString *)thePassword completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
-    return;
+    if(self.isRegister){
+        return;
+    }
+    
+    self.isRegister = YES;
+    
+    NSDictionary *postDict = @{@"cmd"     :@"signup",
+                               @"email"   :theUserName ? :@"",
+                               @"password":thePassword ? :@""};
+    __weak EBoxNetwork *weakSelf = self;
+    [self sendPostRequestWithBody:postDict postUrl:USER_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        weakSelf.userName = (responseJson[@"result"])[@"email"];
+        weakSelf.session = (responseJson[@"result"])[@"session"];
+        
+        [weakSelf login];
+        
+        weakSelf.isRegister = NO;
+        successBlock(responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        weakSelf.isRegister = NO;
+        failedBlock(failedStr);
+    }];
 }
 
 - (void)sendPostRequestWithBody:(NSDictionary *)theBodyDict postUrl:(NSString *)postUrl completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{

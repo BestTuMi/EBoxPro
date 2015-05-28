@@ -10,6 +10,7 @@
 #import <SVProgressHUD.h>
 #import "EBoxNetwork.h"
 #import "FileTabBarController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController ()
 
@@ -119,7 +120,9 @@
 }
 
 - (void)registerClicked:(id)sender{
-    
+    RegisterViewController *regiVC = [[RegisterViewController alloc] init];
+    [self.navigationController pushViewController:regiVC animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)loginSuccessWithAnimated:(BOOL)isAnimated{
