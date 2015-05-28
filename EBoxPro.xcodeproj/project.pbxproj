@@ -20,6 +20,9 @@
 		DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F51B17075D009DD98F /* RegisterViewController.m */; };
 		DEF556F91B173DE8009DD98F /* LocalFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F81B173DE8009DD98F /* LocalFileViewController.m */; };
 		DEF556FC1B173DF2009DD98F /* OnlineFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */; };
+		DEF557031B174E4A009DD98F /* logout-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF557021B174E4A009DD98F /* logout-32.png */; };
+		DEF557051B174E7C009DD98F /* upload-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF557041B174E7C009DD98F /* upload-32.png */; };
+		DEF557071B174EC9009DD98F /* upload-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF557061B174EC9009DD98F /* upload-50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		DEF556F81B173DE8009DD98F /* LocalFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileViewController.m; sourceTree = "<group>"; };
 		DEF556FA1B173DF2009DD98F /* OnlineFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineFileViewController.h; sourceTree = "<group>"; };
 		DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineFileViewController.m; sourceTree = "<group>"; };
+		DEF557021B174E4A009DD98F /* logout-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-32.png"; sourceTree = "<group>"; };
+		DEF557041B174E7C009DD98F /* upload-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-32.png"; sourceTree = "<group>"; };
+		DEF557061B174EC9009DD98F /* upload-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-50.png"; sourceTree = "<group>"; };
 		F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EBoxPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				DEE0C29F1B1162E5007384B5 /* AppDelegate.h */,
+				DEF557011B174DFF009DD98F /* resources */,
 				DEE0C2A01B1162E5007384B5 /* AppDelegate.m */,
 				DEE0C2A21B1162E5007384B5 /* ViewController.h */,
 				DEE0C2A31B1162E5007384B5 /* ViewController.m */,
@@ -172,6 +179,16 @@
 				DEE0C2B61B1162E5007384B5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEF557011B174DFF009DD98F /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEF557041B174E7C009DD98F /* upload-32.png */,
+				DEF557061B174EC9009DD98F /* upload-50.png */,
+				DEF557021B174E4A009DD98F /* logout-32.png */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +273,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF557031B174E4A009DD98F /* logout-32.png in Resources */,
 				DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */,
+				DEF557051B174E7C009DD98F /* upload-32.png in Resources */,
+				DEF557071B174EC9009DD98F /* upload-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
