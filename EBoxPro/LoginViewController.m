@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <SVProgressHUD.h>
 #import "EBoxNetwork.h"
+#import "FileTabBarController.h"
 
 @interface LoginViewController ()
 
@@ -75,11 +76,15 @@
     [self.registerButton setTitle:@"Register" forState:UIControlStateNormal];
     [self.registerButton addTarget:self action:@selector(registerClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.registerButton];
+    
+#warning test
+    self.userNameTextField.text = @"a@a.com";
+    self.passwordTextField.text = @"a";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     if (self.navigationController.navigationBarHidden == NO) {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:animated];
     }
     if ([[EBoxNetwork sharedInstance] isStayOnline]) {
         [self loginSuccessWithAnimated:NO];
@@ -87,7 +92,30 @@
 }
 
 - (void)loginClicked:(UIButton *)sender{
-    
+    if ([[self.userNameTextField text] isEqualToString:@""] || [[self.passwordTextField text] isEqualToString:@""]) {
+        alert(@"Please enter Email and password");
+        return;
+    }else{
+        [self sendLoginRequest];
+    }
+}
+
+- (void)sendLoginRequest{
+    [SVProgressHUD showWithStatus:@"Loging"];
+    __weak LoginViewController *weakSelf = self;
+    [[EBoxNetwork sharedInstance] loginWithUserName:self.userNameTextField.text password:self.passwordTextField.text completeSuccessed:^(NSDictionary *responseJson){
+        [weakSelf performSelectorOnMainThread:@selector(loginSuccess) withObject:nil waitUntilDone:NO];
+    }completeFailed:^(NSString *failedStr){
+        [weakSelf performSelectorOnMainThread:@selector(loginFailed:) withObject:failedStr waitUntilDone:NO];
+    }];
+}
+
+- (void)loginSuccess{
+    [self loginSuccessWithAnimated:YES];
+}
+
+- (void)loginFailed:(NSString *)failedStr{
+    [SVProgressHUD showErrorWithStatus:failedStr];
 }
 
 - (void)registerClicked:(id)sender{
@@ -95,7 +123,11 @@
 }
 
 - (void)loginSuccessWithAnimated:(BOOL)isAnimated{
-    
+    [SVProgressHUD showSuccessWithStatus:@"Login Successed"];
+    FileTabBarController *fileVC = [[FileTabBarController alloc] init];
+    fileVC.title = [[EBoxNetwork sharedInstance] loginUserName];
+    [self.navigationController pushViewController:fileVC animated:isAnimated];
+    [self.navigationController setNavigationBarHidden:NO animated:isAnimated];
 }
 
 - (void)didReceiveMemoryWarning {
