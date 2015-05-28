@@ -7,6 +7,10 @@
 //
 
 #import "FileTabBarController.h"
+#import "LocalFileViewController.h"
+#import "OnlineFileViewController.h"
+#import "EBoxNetwork.h"
+#import <SVProgressHUD.h>
 
 @interface FileTabBarController ()
 
@@ -17,12 +21,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.viewControllers = [NSArray arrayWithObjects:self.onlineFileVC, self.localFileVC, nil];
+    
+    [self.navigationItem setHidesBackButton:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (OnlineFileViewController *)onlineFileVC{
+    if (!_onlineFileVC) {
+        _onlineFileVC = [[OnlineFileViewController alloc] init];
+        _onlineFileVC.tabBarItem.title = @"Online Files";
+//        _onlineFileVC.tabBarItem.image =
+        
+    }
+    return _onlineFileVC;
+}
+
+- (LocalFileViewController *)localFileVC{
+    if (!_localFileVC) {
+        _localFileVC = [[LocalFileViewController alloc] init];
+        _localFileVC.tabBarItem.title = @"Local Files";
+//        _localFileVC.tabBarItem.image =
+        
+    }
+    return _localFileVC;
 }
 
 /*

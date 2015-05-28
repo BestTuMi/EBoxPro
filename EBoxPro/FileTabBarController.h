@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class LocalFileViewController;
+@class OnlineFileViewController;
+
 @interface FileTabBarController : UITabBarController
+
+@property(nonatomic,strong)LocalFileViewController  *localFileVC;
+@property(nonatomic,strong)OnlineFileViewController *onlineFileVC;
 
 @end
