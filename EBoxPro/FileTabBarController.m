@@ -12,8 +12,9 @@
 #import "EBoxNetwork.h"
 #import <SVProgressHUD.h>
 
-@interface FileTabBarController ()
+@interface FileTabBarController () <UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (nonatomic,strong) UIImagePickerController *imagePicker;
 @end
 
 @implementation FileTabBarController
@@ -24,6 +25,12 @@
     self.viewControllers = [NSArray arrayWithObjects:self.onlineFileVC, self.localFileVC, nil];
     
     [self.navigationItem setHidesBackButton:YES];
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout-32"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonClicked)];
+    self.navigationItem.rightBarButtonItem = logoutButton;
+    
+    UIBarButtonItem *uploadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"upload-32"] style:UIBarButtonItemStylePlain target:self action:@selector(uploadButtonClicked)];
+    self.navigationItem.leftBarButtonItem = uploadButton;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +58,39 @@
     return _localFileVC;
 }
 
+- (void)uploadButtonClicked{
+    [self uploadPhotos];
+}
+
+- (void)uploadPhotos{
+    [self presentViewController:self.imagePicker animated:YES completion:^{
+
+    }];
+}
+
+- (UIImagePickerController *)imagePicker{
+    if (!_imagePicker) {
+        _imagePicker = [[UIImagePickerController alloc] init];
+        _imagePicker.delegate = self;
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _imagePicker.allowsEditing = NO;
+    }
+    return _imagePicker;
+}
+
+- (void)logoutButtonClicked{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex != 0) {
+//        [[EBoxNetwork sharedInstance] logout];
+//        [[EBoxLocalFile sharedInstance] logoutAndDeleteFiles];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 /*
 #pragma mark - Navigation
 
