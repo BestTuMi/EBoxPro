@@ -20,6 +20,7 @@ typedef void(^requestFailed)(NSString *failedStr);
 
 - (BOOL)isStayOnline;
 - (NSString *)loginUserName;
+- (void)logout;
 
 - (void)loginWithUserName:(NSString *)theUserName
                 password:(NSString *)thePassword

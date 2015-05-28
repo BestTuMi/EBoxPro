@@ -44,6 +44,13 @@
     }
 }
 
+- (void)logout{
+    self.userName = nil;
+    self.session = nil;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"session"];
+}
+
 + (EBoxNetwork *)sharedInstance{
     static EBoxNetwork *sharedNetwork;
     static dispatch_once_t onceToken;

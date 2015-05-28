@@ -126,7 +126,9 @@
 }
 
 - (void)loginSuccessWithAnimated:(BOOL)isAnimated{
-    [SVProgressHUD showSuccessWithStatus:@"Login Successed"];
+    if (isAnimated) {
+        [SVProgressHUD showSuccessWithStatus:@"Login Successed"];
+    }
     FileTabBarController *fileVC = [[FileTabBarController alloc] init];
     fileVC.title = [[EBoxNetwork sharedInstance] loginUserName];
     [self.navigationController pushViewController:fileVC animated:isAnimated];

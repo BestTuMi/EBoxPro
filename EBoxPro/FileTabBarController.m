@@ -11,6 +11,7 @@
 #import "OnlineFileViewController.h"
 #import "EBoxNetwork.h"
 #import <SVProgressHUD.h>
+#import "EBoxLocalFile.h"
 
 @interface FileTabBarController () <UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -86,8 +87,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex != 0) {
-//        [[EBoxNetwork sharedInstance] logout];
-//        [[EBoxLocalFile sharedInstance] logoutAndDeleteFiles];
+        [[EBoxNetwork sharedInstance] logout];
+        [[EBoxLocalFile sharedInstance] logoutAndDeleteFiles];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
