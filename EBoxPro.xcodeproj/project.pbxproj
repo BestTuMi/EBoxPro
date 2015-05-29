@@ -16,6 +16,7 @@
 		DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C21B1164BD007384B5 /* LoginViewController.m */; };
 		DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */; };
 		DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */; };
+		DEE2A0411B185B0500C31DDA /* EBoxProEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */; };
 		DEF556F31B1700D6009DD98F /* FileTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F21B1700D6009DD98F /* FileTabBarController.m */; };
 		DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F51B17075D009DD98F /* RegisterViewController.m */; };
 		DEF556F91B173DE8009DD98F /* LocalFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F81B173DE8009DD98F /* LocalFileViewController.m */; };
@@ -57,6 +58,8 @@
 		DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBoxNetwork.h; sourceTree = "<group>"; };
 		DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxNetwork.m; sourceTree = "<group>"; };
+		DEE2A03F1B185B0500C31DDA /* EBoxProEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBoxProEncrypt.h; sourceTree = "<group>"; };
+		DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxProEncrypt.m; sourceTree = "<group>"; };
 		DEF556F11B1700D6009DD98F /* FileTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTabBarController.h; sourceTree = "<group>"; };
 		DEF556F21B1700D6009DD98F /* FileTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTabBarController.m; sourceTree = "<group>"; };
 		DEF556F41B17075D009DD98F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */,
 				DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */,
 				DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */,
+				DEE2A03F1B185B0500C31DDA /* EBoxProEncrypt.h */,
+				DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */,
 				DEF557081B175133009DD98F /* EBoxLocalFile.h */,
 				DEF557091B175133009DD98F /* EBoxLocalFile.m */,
 				DEF556F41B17075D009DD98F /* RegisterViewController.h */,
@@ -335,6 +340,7 @@
 				DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */,
 				DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */,
 				DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */,
+				DEE2A0411B185B0500C31DDA /* EBoxProEncrypt.m in Sources */,
 				DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */,
 				DEF556F31B1700D6009DD98F /* FileTabBarController.m in Sources */,
 				DEF5570A1B175133009DD98F /* EBoxLocalFile.m in Sources */,
