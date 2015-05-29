@@ -155,4 +155,72 @@
         }
     }];
 }
+
+- (void)uploadFileWithName:(NSString *)theName contentData:(NSData *)theContentData completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    if (self.isUploadFile) {
+        return;
+    }
+    self.isUploadFile = YES;
+    
+    __block NSString *filePath = [NSString stringWithFormat:@"/%@",theName];
+    NSString *fileLength = [NSString stringWithFormat:@"%lu", (unsigned long)[theContentData length]];
+    
+    NSDictionary *postDict = @{@"cmd":@"upload_file",
+                               @"email":self.userName ? :@"",
+                               @"session":self.session ? :@"",
+                               @"filepath":filePath ? :@"",
+                               @"filemd5":theName ? :@"",
+                               @"filesize":fileLength ?:@""};
+    
+    __weak EBoxNetwork *weakSelf = self;
+    [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        NSString *fileID = ((NSDictionary *)responseJson[@"result"])[@"fileid"];
+        [weakSelf uploadKeyWithFileID:fileID key:filePath completeSuccessed:^(NSDictionary *responseJson) {
+            
+            [weakSelf uploadFileContentWithFileID:fileID contentData:theContentData completeSuccessed:^(NSDictionary *responseJson) {
+                successBlock(responseJson);
+                weakSelf.isUploadFile = NO;
+            } completeFailed:^(NSString *failedStr) {
+                failedBlock(failedStr);
+                weakSelf.isUploadFile = NO;
+            }];
+        } completeFailed:^(NSString *failedStr) {
+            failedBlock(failedStr);
+            weakSelf.isUploadFile = NO;
+        }];
+    } completeFailed:^(NSString *failedStr) {
+        failedBlock(failedStr);
+        weakSelf.isUploadFile = NO;
+    }];
+}
+
+- (void)uploadFileContentWithFileID:(NSString *)theFileID contentData:(NSData *)theContentData completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+//    NSString *keyString = [keyContainer base64EncodedStringWithOptions:0];
+//    NSData *keyContainer = [[NSData alloc] initWithBase64EncodedString:keyString options:0];
+    NSString *base64Str = [theContentData base64EncodedStringWithOptions:0];
+    NSDictionary * postDict = @{@"cmd"          :@"upload_file_data",
+                                @"fileid"       :theFileID ? :@"",
+                                @"offset"       :@"0",
+                                @"data"         :base64Str ? :@""};
+    
+    [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        successBlock(responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        failedBlock(failedStr);
+    }];
+}
+
+- (void)uploadKeyWithFileID:(NSString *)theFileID key:(NSString *)theKey completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    NSDictionary * postDict = @{@"cmd"          :@"save_file_key",
+                                @"email"        :self.userName ? :@"",
+                                @"session"      :self.session ? :@"",
+                                @"fileid"       :theFileID ? :@"",
+                                @"key"          :theKey ? :@"",
+                                @"encrypt_type" :@"extract"};
+    [self sendPostRequestWithBody:postDict postUrl:KEY_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        successBlock(responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        failedBlock(failedStr);
+    }];
+}
 @end

@@ -32,4 +32,9 @@ typedef void(^requestFailed)(NSString *failedStr);
            completeSuccessed:(requestSuccessed)successBlock
               completeFailed:(requestFailed)failedBlock;
 
+- (void)uploadFileWithName:(NSString *)theName
+               contentData:(NSData *)theContentData
+         completeSuccessed:(requestSuccessed)successBlock
+            completeFailed:(requestFailed)failedBlock;
+
 @end

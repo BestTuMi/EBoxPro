@@ -69,6 +69,35 @@
     }];
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    [SVProgressHUD showWithStatus:@"uploading"];
+    UIImage *pickImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *imageData = UIImagePNGRepresentation(pickImage);
+    
+    NSDateFormatter *dateFmt = [[NSDateFormatter alloc] init];
+    [dateFmt setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSMutableString *imageName = [[dateFmt stringFromDate:[NSDate date]] mutableCopy];
+//    NSLog(@"type: %@",info);
+    //TODO: not only png
+    [imageName appendString:@".png"];
+    
+    [[EBoxNetwork sharedInstance] uploadFileWithName:imageName contentData:imageData completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"upload Successed"];
+            
+        });
+    } completeFailed:^(NSString *failedStr) {
+        __block NSString *failedDiscription = [NSString stringWithFormat:@"Upload failed:%@",failedStr];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:failedDiscription];
+        });
+    }];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 - (UIImagePickerController *)imagePicker{
     if (!_imagePicker) {
         _imagePicker = [[UIImagePickerController alloc] init];
@@ -85,6 +114,7 @@
     [alertView show];
 }
 
+#pragma mark - alert view delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex != 0) {
         [[EBoxNetwork sharedInstance] logout];
