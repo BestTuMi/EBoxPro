@@ -7,8 +7,16 @@
 //
 
 #import "OnlineFileViewController.h"
+#import "EBoxNetwork.h"
+#import "EBoxLocalFile.h"
+#import "EBoxFile.h"
+#import "MJRefresh.h"
+#import <SVProgressHUD.h>
 
-@interface OnlineFileViewController ()
+@interface OnlineFileViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic,strong)UITableView *mainTableView;
+@property (nonatomic,strong)NSMutableArray *fileArray;
 
 @end
 
@@ -17,8 +25,81 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.title = @"Online files";
+    self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
+    
+    [self.view addSubview:self.mainTableView];
+    
+    __weak OnlineFileViewController *weakSelf = self;
+    [self.mainTableView addLegendHeaderWithRefreshingBlock:^{
+        [weakSelf pullToRefresh];
+    }];
+    [self.mainTableView.header beginRefreshing];
 }
+
+-(UITableView *)mainTableView{
+    if (!_mainTableView) {
+        _mainTableView = [[UITableView alloc] initWithFrame:self.view.frame];
+        _mainTableView.contentInset = UIEdgeInsetsMake(0, 0, 64+44, 0);
+        _mainTableView.delegate = self;
+        _mainTableView.dataSource = self;
+    }
+    return _mainTableView;
+}
+
+- (NSMutableArray *)fileArray{
+    if (!_fileArray) {
+        _fileArray = [NSMutableArray array];
+    }
+    return _fileArray;
+}
+
+- (void)pullToRefresh{
+    __weak OnlineFileViewController *weakSelf = self;
+    [[EBoxNetwork sharedInstance] getFileListWithCompleteSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullToRefreshSuccess:responseJson];
+        });
+        [weakSelf.mainTableView.header endRefreshing];
+    } completeFailed:^(NSString *failedStr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showInfoWithStatus:failedStr];
+        });
+        [weakSelf.mainTableView.header endRefreshing];
+    }];
+}
+
+- (void)pullToRefreshSuccess:(NSDictionary *)responseJson{
+    [self.fileArray removeAllObjects];
+    NSArray *theFileArray = [(NSArray *)responseJson[@"result"] mutableCopy];
+    for (NSDictionary *theFileDict in theFileArray) {
+        EBoxFile *theFile = [[EBoxFile alloc] initWithResultJson:theFileDict];
+        [self.fileArray addObject:theFile];
+    }
+    [self.mainTableView reloadData];
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.fileArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *theCell = [[UITableViewCell alloc] init];
+    EBoxFile *theFile = (EBoxFile *)self.fileArray[indexPath.row];
+    theCell.textLabel.text = theFile.filePath;
+    return theCell;
+}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return;
+//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

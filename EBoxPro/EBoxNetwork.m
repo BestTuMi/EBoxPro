@@ -223,4 +223,25 @@
         failedBlock(failedStr);
     }];
 }
+
+- (void)getFileListWithCompleteSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    if (self.isGetList) {
+        return;
+    }
+    self.isGetList = YES;
+    NSDictionary * postDict = @{@"cmd"          :@"get_file_list",
+                                @"email"        :self.userName ? :@"",
+                                @"session"      :self.session ? :@"",
+                                @"filepath"     :@"/",
+                                @"is_recursive" :@"1"};
+    
+    __weak EBoxNetwork *weakSelf = self;
+    [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        weakSelf.isGetList = NO;
+        successBlock(responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        weakSelf.isGetList = NO;
+        failedBlock(failedStr);
+    }];
+}
 @end

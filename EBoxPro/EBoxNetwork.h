@@ -37,4 +37,6 @@ typedef void(^requestFailed)(NSString *failedStr);
          completeSuccessed:(requestSuccessed)successBlock
             completeFailed:(requestFailed)failedBlock;
 
+- (void)getFileListWithCompleteSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+
 @end
