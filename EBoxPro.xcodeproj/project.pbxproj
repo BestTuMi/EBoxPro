@@ -17,6 +17,8 @@
 		DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C61B1173AF007384B5 /* UIView+Additions.m */; };
 		DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */; };
 		DEE2A0411B185B0500C31DDA /* EBoxProEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */; };
+		DEE2A0431B18869400C31DDA /* cloud-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2A0421B18869400C31DDA /* cloud-50.png */; };
+		DEE2A0451B18871F00C31DDA /* local-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2A0441B18871F00C31DDA /* local-50.png */; };
 		DEF556F31B1700D6009DD98F /* FileTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F21B1700D6009DD98F /* FileTabBarController.m */; };
 		DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F51B17075D009DD98F /* RegisterViewController.m */; };
 		DEF556F91B173DE8009DD98F /* LocalFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF556F81B173DE8009DD98F /* LocalFileViewController.m */; };
@@ -60,6 +62,8 @@
 		DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxNetwork.m; sourceTree = "<group>"; };
 		DEE2A03F1B185B0500C31DDA /* EBoxProEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBoxProEncrypt.h; sourceTree = "<group>"; };
 		DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBoxProEncrypt.m; sourceTree = "<group>"; };
+		DEE2A0421B18869400C31DDA /* cloud-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-50.png"; sourceTree = "<group>"; };
+		DEE2A0441B18871F00C31DDA /* local-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "local-50.png"; sourceTree = "<group>"; };
 		DEF556F11B1700D6009DD98F /* FileTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTabBarController.h; sourceTree = "<group>"; };
 		DEF556F21B1700D6009DD98F /* FileTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTabBarController.m; sourceTree = "<group>"; };
 		DEF556F41B17075D009DD98F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 		DEF557011B174DFF009DD98F /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEE2A0441B18871F00C31DDA /* local-50.png */,
+				DEE2A0421B18869400C31DDA /* cloud-50.png */,
 				DEF557041B174E7C009DD98F /* upload-32.png */,
 				DEF557061B174EC9009DD98F /* upload-50.png */,
 				DEF557021B174E4A009DD98F /* logout-32.png */,
@@ -287,6 +293,8 @@
 				DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */,
 				DEF557051B174E7C009DD98F /* upload-32.png in Resources */,
 				DEF557071B174EC9009DD98F /* upload-50.png in Resources */,
+				DEE2A0451B18871F00C31DDA /* local-50.png in Resources */,
+				DEE2A0431B18869400C31DDA /* cloud-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,8 +43,7 @@
     if (!_onlineFileVC) {
         _onlineFileVC = [[OnlineFileViewController alloc] init];
         _onlineFileVC.tabBarItem.title = @"Online Files";
-//        _onlineFileVC.tabBarItem.image =
-        
+        _onlineFileVC.tabBarItem.image = [self reSizeImage:[UIImage imageNamed:@"cloud-50"] toSize:CGSizeMake(24, 24)];
     }
     return _onlineFileVC;
 }
@@ -53,10 +52,18 @@
     if (!_localFileVC) {
         _localFileVC = [[LocalFileViewController alloc] init];
         _localFileVC.tabBarItem.title = @"Local Files";
-//        _localFileVC.tabBarItem.image =
-        
+        _localFileVC.tabBarItem.image = [self reSizeImage:[UIImage imageNamed:@"local-50"] toSize:CGSizeMake(24, 24)];
     }
     return _localFileVC;
+}
+
+- (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize{
+    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return reSizeImage;
 }
 
 - (void)uploadButtonClicked{
