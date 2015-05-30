@@ -101,16 +101,14 @@
     NSInteger index = indexPath.row;
     EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
     if ([[EBoxLocalFile sharedInstance] isLocalFileExistWithFileName:theFile.filePath]) {
-        [self segueToPreviewVC:index];
+        [self segueToPreviewVC:theFile];
     }else{
-        [self downloadSelectedFile:index];
-        
+        [self downloadSelectedFile:theFile];
     }
    
 }
 
-- (void)downloadSelectedFile:(NSInteger)index{
-    EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
+- (void)downloadSelectedFile:(EBoxFile *)theFile{
     NSString *fileID = theFile.fileID;
     
     [SVProgressHUD showWithStatus:@"downloading"];
@@ -119,7 +117,7 @@
         [[EBoxLocalFile sharedInstance] saveFile:downloadFile];
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"download successed"];
-            [self segueToPreviewVC:index];
+            [self segueToPreviewVC:theFile];
         });
     } completeFailed:^(NSString *failedStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -128,8 +126,7 @@
     }];
 }
 
-- (void)segueToPreviewVC:(NSInteger)index{
-    EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
+- (void)segueToPreviewVC:(EBoxFile *)theFile{
     
     PreviewViewController *previewVC = [[PreviewViewController alloc] initWithFileName:theFile.filePath];
     if (previewVC) {
