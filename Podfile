@@ -4,6 +4,7 @@
 target 'EBoxPro' do
 pod 'SVProgressHUD', '~> 1.1.3'
 pod 'MJRefresh', '~>1.4.6'
+pod 'SWTableViewCell', '~> 0.3.7'
 end
 
 target 'EBoxProTests' do
