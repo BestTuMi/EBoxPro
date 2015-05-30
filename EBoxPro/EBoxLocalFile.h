@@ -19,4 +19,5 @@
 - (void)logoutAndDeleteFiles;
 - (void)saveFile:(EBoxFile *)theFile;
 
+- (EBoxFile *)localFileWithFileName:(NSString *)theFileName;
 @end

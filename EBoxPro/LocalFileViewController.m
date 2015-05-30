@@ -9,6 +9,7 @@
 #import "LocalFileViewController.h"
 #import "EBoxLocalFile.h"
 #import "MJRefresh.h"
+#import "PreviewViewController.h"
 
 @interface LocalFileViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -35,6 +36,10 @@
     }];
     
     [self.view addSubview:self.mainTableView];
+    [self.mainTableView.header beginRefreshing];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     [self.mainTableView.header beginRefreshing];
 }
 
@@ -69,9 +74,15 @@
     return theCell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return;
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *filePath = self.localFileList[indexPath.row];
+    PreviewViewController *previewVC = [[PreviewViewController alloc] initWithFileName:filePath];
+    if (previewVC) {
+        [self.navigationController pushViewController:previewVC animated:YES];
+    }else{
+        alert(@"Cannot preview this kind of file");
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -46,16 +46,16 @@
     return savedPath;
 }
 
-//- (EBoxFile *)localFileWithFileName:(NSString *)theFileName{
-//    NSString *filePath = [self localFilePathWithName:theFileName];
-//    NSData *fileContent = [NSData dataWithContentsOfFile:filePath];
-//    if (filePath && fileContent) {
-//        NSDictionary *theDict = @{@"filepath":filePath, @"content":fileContent};
-//        EBoxFile *theFile = [[EBoxFile alloc] initWithResultJson:theDict];
-//        return theFile;
-//    }
-//    return nil;
-//}
+- (EBoxFile *)localFileWithFileName:(NSString *)theFileName{
+    NSString *filePath = [self localFilePathWithName:theFileName];
+    NSData *fileContent = [NSData dataWithContentsOfFile:filePath];
+    if (filePath && fileContent) {
+        NSDictionary *theDict = @{@"filepath":filePath, @"content":fileContent};
+        EBoxFile *theFile = [[EBoxFile alloc] initWithResultJson:theDict];
+        return theFile;
+    }
+    return nil;
+}
 
 - (void)saveFile:(EBoxFile *)theFile{
     NSData *fileContent = theFile.fileContent;
