@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86CD1586C70F6A694D12519D /* libPods-EBoxPro.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */; };
+		DEDA7EA31B19A698007157E0 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA7EA21B19A698007157E0 /* PreviewViewController.m */; };
 		DEE0C29E1B1162E5007384B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C29D1B1162E5007384B5 /* main.m */; };
 		DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2A01B1162E5007384B5 /* AppDelegate.m */; };
 		DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2A31B1162E5007384B5 /* ViewController.m */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		ACA02F0064DA029EF31E34E9 /* Pods-EBoxPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBoxPro.release.xcconfig"; path = "Pods/Target Support Files/Pods-EBoxPro/Pods-EBoxPro.release.xcconfig"; sourceTree = "<group>"; };
 		D665645A8003D42C451B5248 /* Pods-EBoxPro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBoxPro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EBoxPro/Pods-EBoxPro.debug.xcconfig"; sourceTree = "<group>"; };
+		DEDA7EA11B19A698007157E0 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		DEDA7EA21B19A698007157E0 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		DEE0C2981B1162E5007384B5 /* EBoxPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EBoxPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE0C29C1B1162E5007384B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEE0C29D1B1162E5007384B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				DEF556F21B1700D6009DD98F /* FileTabBarController.m */,
 				DEF556F71B173DE8009DD98F /* LocalFileViewController.h */,
 				DEF556F81B173DE8009DD98F /* LocalFileViewController.m */,
+				DEDA7EA11B19A698007157E0 /* PreviewViewController.h */,
+				DEDA7EA21B19A698007157E0 /* PreviewViewController.m */,
 				DEF556FA1B173DF2009DD98F /* OnlineFileViewController.h */,
 				DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */,
 				DEE2A0461B188AC800C31DDA /* EBoxFile.h */,
@@ -361,6 +366,7 @@
 				DEE0C2C71B1173AF007384B5 /* UIView+Additions.m in Sources */,
 				DEF556F91B173DE8009DD98F /* LocalFileViewController.m in Sources */,
 				DEE0C29E1B1162E5007384B5 /* main.m in Sources */,
+				DEDA7EA31B19A698007157E0 /* PreviewViewController.m in Sources */,
 				DEF556F61B17075D009DD98F /* RegisterViewController.m in Sources */,
 				DEE2A0481B188AC800C31DDA /* EBoxFile.m in Sources */,
 			);
