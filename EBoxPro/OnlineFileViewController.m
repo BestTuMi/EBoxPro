@@ -96,9 +96,23 @@
     return theCell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return;
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    EBoxFile *theFile = (EBoxFile *)self.fileArray[indexPath.row];
+    NSString *fileID = theFile.fileID;
+    
+    [SVProgressHUD showWithStatus:@"downloading"];
+    [[EBoxNetwork sharedInstance] downloadFileWithFileID:fileID completeSuccessed:^(NSDictionary *responseJson) {
+        EBoxFile *downloadFile = [[EBoxFile alloc] initWithResultJson:responseJson];
+        [[EBoxLocalFile sharedInstance] saveFile:downloadFile];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"downloading successed"];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:@"downloading error"];
+        });
+    }];
+}
 
 
 - (void)didReceiveMemoryWarning {

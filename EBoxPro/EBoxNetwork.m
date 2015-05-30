@@ -244,4 +244,51 @@
         failedBlock(failedStr);
     }];
 }
+
+- (void)downloadFileWithFileID:(NSString *)theFileID completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    if (self.isDownloading) {
+        return;
+    }
+    self.isDownloading = YES;
+    
+    NSDictionary * postDict = @{@"cmd"          :@"download_file",
+                                @"fileid"       :theFileID ? :@"",
+                                @"email"        :self.userName ? :@"",
+                                @"session"      :self.session ? :@""};
+    
+    __weak EBoxNetwork *weakSelf = self;
+    [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        
+        __block NSMutableDictionary *fileResponseJson = [responseJson[@"result"] mutableCopy];
+        NSData *contentData = [[NSData alloc] initWithBase64EncodedString:fileResponseJson[@"content"] options:0];
+        [fileResponseJson setValue:contentData forKey:@"content"];
+        [weakSelf downloadKeyWithFileID:theFileID completeSuccessed:^(NSDictionary *responseJson) {
+            NSDictionary *resultJson = responseJson[@"result"];
+            [fileResponseJson setValue:resultJson[@"key"] forKey:@"key"];
+            [fileResponseJson setValue:resultJson[@"encrypt_type"] forKey:@"encrypt_type"];
+            successBlock(fileResponseJson);
+            weakSelf.isDownloading = NO;
+        } completeFailed:^(NSString *failedStr) {
+            failedBlock(failedStr);
+            weakSelf.isDownloading = NO;
+        }];
+        
+    } completeFailed:^(NSString *failedStr) {
+        failedBlock(failedStr);
+        weakSelf.isDownloading = NO;
+    }];
+}
+
+- (void)downloadKeyWithFileID:(NSString *)theFileID completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    NSDictionary * postDict = @{@"cmd"          :@"get_file_key",
+                                @"email"        :self.userName ? :@"",
+                                @"session"      :self.session ? :@"",
+                                @"fileid"       :theFileID ? :@"",
+                                @"encrypt_type" :@"extract"};
+    [self sendPostRequestWithBody:postDict postUrl:KEY_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
+        successBlock(responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        failedBlock(failedStr);
+    }];
+}
 @end

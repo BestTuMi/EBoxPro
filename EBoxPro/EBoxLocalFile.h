@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class EBoxFile;
+
 @interface EBoxLocalFile : NSObject
 
 + (EBoxLocalFile *)sharedInstance;
 
 - (void)logoutAndDeleteFiles;
+- (void)saveFile:(EBoxFile *)theFile;
 
 @end
