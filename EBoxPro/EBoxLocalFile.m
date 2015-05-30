@@ -68,4 +68,20 @@
     return;
 }
 
+- (BOOL)isLocalFileExistWithFileName:(NSString *)theFileName{
+    if ([theFileName characterAtIndex:0] == '/') {
+        NSMutableString *mutableFileName = [theFileName mutableCopy];
+        [mutableFileName deleteCharactersInRange:NSMakeRange(0, 1)];
+        theFileName = [[NSString alloc] initWithString:mutableFileName];
+    }
+    
+    NSArray *fileList = [self getLocalFilesPathList];
+    for (NSString *filePath in fileList) {
+        if ([filePath isEqualToString:theFileName]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

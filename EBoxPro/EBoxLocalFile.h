@@ -20,4 +20,5 @@
 - (void)saveFile:(EBoxFile *)theFile;
 
 - (EBoxFile *)localFileWithFileName:(NSString *)theFileName;
+- (BOOL)isLocalFileExistWithFileName:(NSString *)theFileName;
 @end

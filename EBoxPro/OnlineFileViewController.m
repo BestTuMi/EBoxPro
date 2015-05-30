@@ -12,6 +12,7 @@
 #import "EBoxFile.h"
 #import "MJRefresh.h"
 #import <SVProgressHUD.h>
+#import "PreviewViewController.h"
 
 @interface OnlineFileViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -97,7 +98,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self downloadSelectedFile:indexPath.row];
+    NSInteger index = indexPath.row;
+    EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
+    if ([[EBoxLocalFile sharedInstance] isLocalFileExistWithFileName:theFile.filePath]) {
+        [self segueToPreviewVC:index];
+    }else{
+        [self downloadSelectedFile:index];
+        
+    }
+   
 }
 
 - (void)downloadSelectedFile:(NSInteger)index{
@@ -110,12 +119,24 @@
         [[EBoxLocalFile sharedInstance] saveFile:downloadFile];
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"download successed"];
+            [self segueToPreviewVC:index];
         });
     } completeFailed:^(NSString *failedStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showErrorWithStatus:@"download error"];
         });
     }];
+}
+
+- (void)segueToPreviewVC:(NSInteger)index{
+    EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
+    
+    PreviewViewController *previewVC = [[PreviewViewController alloc] initWithFileName:theFile.filePath];
+    if (previewVC) {
+        [self.navigationController pushViewController:previewVC animated:YES];
+    }else{
+        alert(@"Not support");
+    }
 }
 
 
