@@ -97,7 +97,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EBoxFile *theFile = (EBoxFile *)self.fileArray[indexPath.row];
+    [self downloadSelectedFile:indexPath.row];
+}
+
+- (void)downloadSelectedFile:(NSInteger)index{
+    EBoxFile *theFile = (EBoxFile *)self.fileArray[index];
     NSString *fileID = theFile.fileID;
     
     [SVProgressHUD showWithStatus:@"downloading"];
@@ -105,11 +109,11 @@
         EBoxFile *downloadFile = [[EBoxFile alloc] initWithResultJson:responseJson];
         [[EBoxLocalFile sharedInstance] saveFile:downloadFile];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:@"downloading successed"];
+            [SVProgressHUD showSuccessWithStatus:@"download successed"];
         });
     } completeFailed:^(NSString *failedStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:@"downloading error"];
+            [SVProgressHUD showErrorWithStatus:@"download error"];
         });
     }];
 }
