@@ -14,6 +14,8 @@
 
 + (EBoxLocalFile *)sharedInstance;
 
+- (NSArray *)getLocalFilesPathList;
+
 - (void)logoutAndDeleteFiles;
 - (void)saveFile:(EBoxFile *)theFile;
 

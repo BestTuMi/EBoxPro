@@ -20,10 +20,16 @@
     return sharedLocalFile;
 }
 
+- (NSArray *)getLocalFilesPathList{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *filePaths = [[NSArray alloc] initWithArray:[fileManager contentsOfDirectoryAtPath:[self localFilePathWithName:@""] error:nil]];
+    return filePaths;
+}
+
 - (NSString *)localFilePathWithName:(NSString *)theFileName{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    
+//    NSLog(@"%@",documentsDirectory);
     if (theFileName.length == 0) {
         NSMutableString *savedPath = [documentsDirectory mutableCopy];
         [savedPath appendString:@"/"];
@@ -39,6 +45,17 @@
     NSString *savedPath = [documentsDirectory stringByAppendingPathComponent:theFileName];
     return savedPath;
 }
+
+//- (EBoxFile *)localFileWithFileName:(NSString *)theFileName{
+//    NSString *filePath = [self localFilePathWithName:theFileName];
+//    NSData *fileContent = [NSData dataWithContentsOfFile:filePath];
+//    if (filePath && fileContent) {
+//        NSDictionary *theDict = @{@"filepath":filePath, @"content":fileContent};
+//        EBoxFile *theFile = [[EBoxFile alloc] initWithResultJson:theDict];
+//        return theFile;
+//    }
+//    return nil;
+//}
 
 - (void)saveFile:(EBoxFile *)theFile{
     NSData *fileContent = theFile.fileContent;
