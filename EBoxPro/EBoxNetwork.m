@@ -266,11 +266,14 @@
         
         __block NSMutableDictionary *fileResponseJson = [responseJson[@"result"] mutableCopy];
         NSData *contentData = [[NSData alloc] initWithBase64EncodedString:fileResponseJson[@"content"] options:0];
-        [fileResponseJson setValue:contentData forKey:@"content"];
+//        [fileResponseJson setValue:contentData forKey:@"content"];
         [weakSelf downloadKeyWithFileID:theFileID completeSuccessed:^(NSDictionary *responseJson) {
             NSDictionary *resultJson = responseJson[@"result"];
             [fileResponseJson setValue:resultJson[@"key"] forKey:@"key"];
             [fileResponseJson setValue:resultJson[@"encrypt_type"] forKey:@"encrypt_type"];
+            NSData *keyData = [[NSData alloc] initWithBase64EncodedString:fileResponseJson[@"key"] options:0];
+            NSData *afterDecryptFile = [EBoxProEncrypt decrypt:contentData withKey:keyData];
+            [fileResponseJson setValue:afterDecryptFile forKey:@"content"];
             successBlock(fileResponseJson);
             weakSelf.isDownloading = NO;
         } completeFailed:^(NSString *failedStr) {
