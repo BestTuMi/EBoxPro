@@ -29,7 +29,7 @@
 - (NSString *)localFilePathWithName:(NSString *)theFileName{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSLog(@"%@",documentsDirectory);
+    NSLog(@"%@",documentsDirectory);
     if (theFileName.length == 0) {
         NSMutableString *savedPath = [documentsDirectory mutableCopy];
         [savedPath appendString:@"/"];
