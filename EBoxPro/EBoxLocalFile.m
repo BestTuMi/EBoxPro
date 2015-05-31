@@ -64,7 +64,11 @@
 
 - (void)logoutAndDeleteFiles{
     //TODO: delete need improved
-    
+    NSArray * filePathes = [self getLocalFilesPathList];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    for (NSString * filePath in filePathes) {
+        [fileManager removeItemAtPath:[self localFilePathWithName:filePath] error:nil];
+    }
     return;
 }
 
