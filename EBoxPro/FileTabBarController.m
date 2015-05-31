@@ -84,9 +84,9 @@
     NSDateFormatter *dateFmt = [[NSDateFormatter alloc] init];
     [dateFmt setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSMutableString *imageName = [[dateFmt stringFromDate:[NSDate date]] mutableCopy];
-//    NSLog(@"type: %@",info);
-    //TODO: not only png
-    [imageName appendString:@".png"];
+    NSString *fileType = [[[[info objectForKey:UIImagePickerControllerReferenceURL] lastPathComponent] componentsSeparatedByString:@"."] lastObject];
+    [imageName appendString:@"."];
+    [imageName appendString:[fileType lowercaseString]];
     
     [[EBoxNetwork sharedInstance] uploadFileWithName:imageName contentData:imageData completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
