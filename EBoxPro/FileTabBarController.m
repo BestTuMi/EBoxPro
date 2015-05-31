@@ -91,7 +91,7 @@
     [[EBoxNetwork sharedInstance] uploadFileWithName:imageName contentData:imageData completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"upload Successed"];
-            
+            [self.onlineFileVC refreshAfterUpload];
         });
     } completeFailed:^(NSString *failedStr) {
         __block NSString *failedDiscription = [NSString stringWithFormat:@"Upload failed:%@",failedStr];

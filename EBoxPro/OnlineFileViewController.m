@@ -39,6 +39,10 @@
     [self.mainTableView.header beginRefreshing];
 }
 
+- (void)refreshAfterUpload{
+    [self.mainTableView.header beginRefreshing];
+}
+
 -(UITableView *)mainTableView{
     if (!_mainTableView) {
         _mainTableView = [[UITableView alloc] initWithFrame:self.view.frame];
