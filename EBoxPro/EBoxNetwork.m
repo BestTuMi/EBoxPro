@@ -176,7 +176,8 @@
     __weak EBoxNetwork *weakSelf = self;
     [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
         NSString *fileID = ((NSDictionary *)responseJson[@"result"])[@"fileid"];
-        NSDictionary *afterEncryptDict = [EBoxProEncrypt encrypt:theContentData forSuffixFile:[[theName componentsSeparatedByString:@"."] lastObject]];
+        NSString *fileSuffix = [[theName componentsSeparatedByString:@"."] lastObject];
+        NSDictionary *afterEncryptDict = [EBoxProEncrypt encrypt:theContentData forSuffixFile:fileSuffix];
         NSData *keyData = afterEncryptDict[@"keyData"];
         NSData *afterEncryptFileData = afterEncryptDict[@"afterEncryptFileData"];
         [weakSelf uploadKeyWithFileID:fileID key:keyData completeSuccessed:^(NSDictionary *responseJson) {
