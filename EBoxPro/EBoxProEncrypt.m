@@ -45,7 +45,7 @@
     }
     
     NSMutableDictionary *myDict = [[NSMutableDictionary alloc] init];
-    [myDict setValue:afterFile forKey:@"afterFileData"];
+    [myDict setValue:afterFile forKey:@"afterEncryptFileData"];
     [myDict setValue:keyContainer forKey:@"keyData"];
     return myDict;
 }

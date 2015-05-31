@@ -7,6 +7,7 @@
 //
 
 #import "EBoxNetwork.h"
+#import "EBoxProEncrypt.h"
 
 @interface EBoxNetwork()
 
@@ -175,9 +176,12 @@
     __weak EBoxNetwork *weakSelf = self;
     [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
         NSString *fileID = ((NSDictionary *)responseJson[@"result"])[@"fileid"];
-        [weakSelf uploadKeyWithFileID:fileID key:filePath completeSuccessed:^(NSDictionary *responseJson) {
+        NSDictionary *afterEncryptDict = [EBoxProEncrypt encrypt:theContentData forSuffixFile:[[theName componentsSeparatedByString:@"."] lastObject]];
+        NSData *keyData = afterEncryptDict[@"keyData"];
+        NSData *afterEncryptFileData = afterEncryptDict[@"afterEncryptFileData"];
+        [weakSelf uploadKeyWithFileID:fileID key:keyData completeSuccessed:^(NSDictionary *responseJson) {
             
-            [weakSelf uploadFileContentWithFileID:fileID contentData:theContentData completeSuccessed:^(NSDictionary *responseJson) {
+            [weakSelf uploadFileContentWithFileID:fileID contentData:afterEncryptFileData completeSuccessed:^(NSDictionary *responseJson) {
                 successBlock(responseJson);
                 weakSelf.isUploadFile = NO;
             } completeFailed:^(NSString *failedStr) {
@@ -197,11 +201,11 @@
 - (void)uploadFileContentWithFileID:(NSString *)theFileID contentData:(NSData *)theContentData completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
 //    NSString *keyString = [keyContainer base64EncodedStringWithOptions:0];
 //    NSData *keyContainer = [[NSData alloc] initWithBase64EncodedString:keyString options:0];
-    NSString *base64Str = [theContentData base64EncodedStringWithOptions:0];
+    NSString *base64File = [theContentData base64EncodedStringWithOptions:0];
     NSDictionary * postDict = @{@"cmd"          :@"upload_file_data",
                                 @"fileid"       :theFileID ? :@"",
                                 @"offset"       :@"0",
-                                @"data"         :base64Str ? :@""};
+                                @"data"         :base64File ? :@""};
     
     [self sendPostRequestWithBody:postDict postUrl:FILE_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
         successBlock(responseJson);
@@ -210,12 +214,13 @@
     }];
 }
 
-- (void)uploadKeyWithFileID:(NSString *)theFileID key:(NSString *)theKey completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+- (void)uploadKeyWithFileID:(NSString *)theFileID key:(NSData *)theKeyData completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    NSString *base64Key = [theKeyData base64EncodedStringWithOptions:0];
     NSDictionary * postDict = @{@"cmd"          :@"save_file_key",
                                 @"email"        :self.userName ? :@"",
                                 @"session"      :self.session ? :@"",
                                 @"fileid"       :theFileID ? :@"",
-                                @"key"          :theKey ? :@"",
+                                @"key"          :base64Key ? :@"",
                                 @"encrypt_type" :@"extract"};
     [self sendPostRequestWithBody:postDict postUrl:KEY_SERVER_ADDRESS completeSuccessed:^(NSDictionary *responseJson) {
         successBlock(responseJson);
