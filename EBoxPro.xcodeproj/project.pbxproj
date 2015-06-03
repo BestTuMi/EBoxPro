@@ -12,7 +12,6 @@
 		DEDA7EA61B19DDB0007157E0 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA7EA51B19DDB0007157E0 /* CustomTableViewCell.m */; };
 		DEE0C29E1B1162E5007384B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C29D1B1162E5007384B5 /* main.m */; };
 		DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2A01B1162E5007384B5 /* AppDelegate.m */; };
-		DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2A31B1162E5007384B5 /* ViewController.m */; };
 		DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE0C2A81B1162E5007384B5 /* Images.xcassets */; };
 		DEE0C2B81B1162E5007384B5 /* EBoxProTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2B71B1162E5007384B5 /* EBoxProTests.m */; };
 		DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C2C21B1164BD007384B5 /* LoginViewController.m */; };
@@ -55,8 +54,6 @@
 		DEE0C29D1B1162E5007384B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DEE0C29F1B1162E5007384B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DEE0C2A01B1162E5007384B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DEE0C2A21B1162E5007384B5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DEE0C2A31B1162E5007384B5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DEE0C2A81B1162E5007384B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DEE0C2B11B1162E5007384B5 /* EBoxProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EBoxProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE0C2B61B1162E5007384B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +124,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE2A077D1B1DE1F2003875A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2A0461B188AC800C31DDA /* EBoxFile.h */,
+				DEE2A0471B188AC800C31DDA /* EBoxFile.m */,
+				DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */,
+				DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */,
+				DEE2A03F1B185B0500C31DDA /* EBoxProEncrypt.h */,
+				DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */,
+				DEF557081B175133009DD98F /* EBoxLocalFile.h */,
+				DEF557091B175133009DD98F /* EBoxLocalFile.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		DEE0C28F1B1162E5007384B5 = {
 			isa = PBXGroup;
 			children = (
@@ -153,28 +165,19 @@
 				DEE0C29F1B1162E5007384B5 /* AppDelegate.h */,
 				DEF557011B174DFF009DD98F /* resources */,
 				DEE0C2A01B1162E5007384B5 /* AppDelegate.m */,
-				DEE0C2A21B1162E5007384B5 /* ViewController.h */,
-				DEE0C2A31B1162E5007384B5 /* ViewController.m */,
 				DEE0C2C11B1164BD007384B5 /* LoginViewController.h */,
 				DEE0C2C21B1164BD007384B5 /* LoginViewController.m */,
+				DEF556F41B17075D009DD98F /* RegisterViewController.h */,
+				DEF556F51B17075D009DD98F /* RegisterViewController.m */,
 				DEF556F11B1700D6009DD98F /* FileTabBarController.h */,
 				DEF556F21B1700D6009DD98F /* FileTabBarController.m */,
+				DEF556FA1B173DF2009DD98F /* OnlineFileViewController.h */,
+				DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */,
 				DEF556F71B173DE8009DD98F /* LocalFileViewController.h */,
 				DEF556F81B173DE8009DD98F /* LocalFileViewController.m */,
 				DEDA7EA11B19A698007157E0 /* PreviewViewController.h */,
 				DEDA7EA21B19A698007157E0 /* PreviewViewController.m */,
-				DEF556FA1B173DF2009DD98F /* OnlineFileViewController.h */,
-				DEF556FB1B173DF2009DD98F /* OnlineFileViewController.m */,
-				DEE2A0461B188AC800C31DDA /* EBoxFile.h */,
-				DEE2A0471B188AC800C31DDA /* EBoxFile.m */,
-				DEE0C2C81B11B1F2007384B5 /* EBoxNetwork.h */,
-				DEE0C2C91B11B1F2007384B5 /* EBoxNetwork.m */,
-				DEE2A03F1B185B0500C31DDA /* EBoxProEncrypt.h */,
-				DEE2A0401B185B0500C31DDA /* EBoxProEncrypt.m */,
-				DEF557081B175133009DD98F /* EBoxLocalFile.h */,
-				DEF557091B175133009DD98F /* EBoxLocalFile.m */,
-				DEF556F41B17075D009DD98F /* RegisterViewController.h */,
-				DEF556F51B17075D009DD98F /* RegisterViewController.m */,
+				DE2A077D1B1DE1F2003875A0 /* Model */,
 				DEE0C2A81B1162E5007384B5 /* Images.xcassets */,
 				DEE0C29B1B1162E5007384B5 /* Supporting Files */,
 				DEDA7EA41B19DDB0007157E0 /* CustomTableViewCell.h */,
@@ -365,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE0C2C31B1164BD007384B5 /* LoginViewController.m in Sources */,
-				DEE0C2A41B1162E5007384B5 /* ViewController.m in Sources */,
 				DEE0C2CA1B11B1F2007384B5 /* EBoxNetwork.m in Sources */,
 				DEE2A0411B185B0500C31DDA /* EBoxProEncrypt.m in Sources */,
 				DEE0C2A11B1162E5007384B5 /* AppDelegate.m in Sources */,
