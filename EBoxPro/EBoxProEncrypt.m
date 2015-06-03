@@ -34,6 +34,8 @@
     else if([TEXT containsObject:fileSuffix]){
         fileHeaderLength = 0;
         locationStepLength = 100;
+    }else{
+        locationStepLength = 300;
     }
     
     for(ex_location += fileHeaderLength; ex_location+ex_length < fileData.length; ex_location += locationStepLength){
