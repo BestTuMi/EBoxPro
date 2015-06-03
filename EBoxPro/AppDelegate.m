@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "EBoxNetwork.h"
+#import "FileTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -48,6 +50,27 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if (url != nil) {
+        NSString *path = [url absoluteString];
+        NSMutableString *fixedPath = [[NSMutableString alloc] initWithString:path];
+        if ([path hasPrefix:@"file://"]) {
+            [fixedPath replaceOccurrencesOfString:@"file://" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, path.length)];
+        }
+        if ([[EBoxNetwork sharedInstance] isStayOnline]) {
+            UINavigationController *naviVC = (UINavigationController *)self.window.rootViewController;
+            if ([naviVC.topViewController isKindOfClass:[FileTabBarController class]]) {
+                FileTabBarController *topVC = (FileTabBarController *)naviVC.topViewController;
+                [topVC uploadFile:fixedPath];
+            }
+        }else{
+            alert(@"Please log in first");
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

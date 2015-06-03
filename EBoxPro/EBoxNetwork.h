@@ -11,9 +11,9 @@
 //#define KEY_SERVER_ADDRESS @"http://0.0.0.0:8882"
 //#define FILE_SERVER_ADDRESS @"http://0.0.0.0:8883"
 
-#define USER_SERVER_ADDRESS  @"http://10.12.137.158:8881"
-#define KEY_SERVER_ADDRESS   @"http://10.12.137.158:8882"
-#define FILE_SERVER_ADDRESS  @"http://10.12.137.158:8883"
+#define USER_SERVER_ADDRESS  @"http://192.168.1.104:8881"
+#define KEY_SERVER_ADDRESS   @"http://192.168.1.104:8882"
+#define FILE_SERVER_ADDRESS  @"http://192.168.1.104:8883"
 
 typedef void(^requestSuccessed)(NSDictionary *responseJson);//定义了一个requestSuccessed类型的代码块，返回值void，接受一个NSDictionary*类型的参数
 typedef void(^requestFailed)(NSString *failedStr);

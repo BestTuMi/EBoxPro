@@ -29,8 +29,8 @@
     if ([fileType isEqualToString:@"txt"] || [fileType isEqualToString:@"TXT"]) {
         //        NSString * fileContent = [NSString stringWithContentsOfFile:theFileUrl usedEncoding:NSUTF8StringEncoding error:nil];
         NSData * fileData = [NSData dataWithContentsOfFile:theFileUrl];
-        NSString * fileContent = [[NSString alloc] initWithData:fileData encoding:NSUnicodeStringEncoding];
-        [self uploadFile:[fileContent dataUsingEncoding:NSUTF8StringEncoding] name:fileName];
+        
+        [self uploadFile:fileData name:fileName];
     }
     
     else{
