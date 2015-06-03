@@ -20,6 +20,70 @@
 
 @implementation FileTabBarController
 
+- (void)uploadFile:(NSString *)theFileUrl
+{
+    NSString * fileName = [theFileUrl componentsSeparatedByString:@"/"].lastObject;
+    
+    NSString * fileType = [theFileUrl componentsSeparatedByString:@"."].lastObject;
+    
+    if ([fileType isEqualToString:@"txt"] || [fileType isEqualToString:@"TXT"]) {
+        //        NSString * fileContent = [NSString stringWithContentsOfFile:theFileUrl usedEncoding:NSUTF8StringEncoding error:nil];
+        NSData * fileData = [NSData dataWithContentsOfFile:theFileUrl];
+        NSString * fileContent = [[NSString alloc] initWithData:fileData encoding:NSUnicodeStringEncoding];
+        [self uploadFile:[fileContent dataUsingEncoding:NSUTF8StringEncoding] name:fileName];
+    }
+    
+    else{
+        alert(@"暂时不支持这种类型文件的上传");
+    }
+    
+}
+
+- (void)uploadFile:(NSData *)theData name:(NSString *)theName
+{
+    [[EBoxNetwork sharedInstance] uploadFileWithName:theName contentData:theData completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"Upload Successed"];
+            [self.onlineFileVC refreshAfterUpload];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        __block NSString * failedDiscription = [NSString stringWithFormat:@"Upload Failed: %@", failedStr];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:failedDiscription];
+        });
+    }];
+    
+}
+
+- (void)uploadImage:(UIImage *)theImage name:(NSString *)theImageName fileType:fileType
+{
+    NSData *imageData = [[NSData alloc] init];
+    if ([fileType isEqualToString:@"JPG"]) {
+        imageData = UIImageJPEGRepresentation(theImage, 1.0);
+    }else{
+        imageData = UIImagePNGRepresentation(theImage);
+    }
+    
+    NSMutableString * imageName;
+    
+    if (!theImageName || theImageName.length == 0) {
+        NSDateFormatter * dateFmt = [[NSDateFormatter alloc] init];
+        [dateFmt setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        imageName = [[dateFmt stringFromDate:[NSDate date]] mutableCopy];
+        
+        [imageName appendString:@"."];
+        [imageName appendString:[fileType lowercaseString]];
+    }
+    else{
+        imageName = [theImageName mutableCopy];
+    }
+    
+    [self uploadFile:imageData name:imageName];
+    
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -78,28 +142,9 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [SVProgressHUD showWithStatus:@"uploading"];
-    UIImage *pickImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSData *imageData = UIImagePNGRepresentation(pickImage);
-    
-    NSDateFormatter *dateFmt = [[NSDateFormatter alloc] init];
-    [dateFmt setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSMutableString *imageName = [[dateFmt stringFromDate:[NSDate date]] mutableCopy];
     NSString *fileType = [[[[info objectForKey:UIImagePickerControllerReferenceURL] lastPathComponent] componentsSeparatedByString:@"."] lastObject];
-    [imageName appendString:@"."];
-    [imageName appendString:[fileType lowercaseString]];
-    
-    [[EBoxNetwork sharedInstance] uploadFileWithName:imageName contentData:imageData completeSuccessed:^(NSDictionary *responseJson) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:@"upload Successed"];
-            [self.onlineFileVC refreshAfterUpload];
-        });
-    } completeFailed:^(NSString *failedStr) {
-        __block NSString *failedDiscription = [NSString stringWithFormat:@"Upload failed:%@",failedStr];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:failedDiscription];
-        });
-    }];
-    
+    UIImage *pickImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self uploadImage:pickImage name:nil fileType:fileType];
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];

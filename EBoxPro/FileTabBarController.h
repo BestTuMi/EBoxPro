@@ -16,4 +16,6 @@
 @property(nonatomic,strong)LocalFileViewController  *localFileVC;
 @property(nonatomic,strong)OnlineFileViewController *onlineFileVC;
 
+- (void)uploadFile:(NSString *)theFileUrl;
+
 @end
