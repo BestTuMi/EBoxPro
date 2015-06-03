@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		86CD1586C70F6A694D12519D /* libPods-EBoxPro.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F869661967BD681AAEBEA49A /* libPods-EBoxPro.a */; };
+		DE2A07801B1F0DC4003875A0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2A077E1B1F0DC4003875A0 /* icon.png */; };
+		DE2A07811B1F0DC4003875A0 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2A077F1B1F0DC4003875A0 /* icon@2x.png */; };
 		DEDA7EA31B19A698007157E0 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA7EA21B19A698007157E0 /* PreviewViewController.m */; };
 		DEDA7EA61B19DDB0007157E0 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA7EA51B19DDB0007157E0 /* CustomTableViewCell.m */; };
 		DEE0C29E1B1162E5007384B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0C29D1B1162E5007384B5 /* main.m */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		ACA02F0064DA029EF31E34E9 /* Pods-EBoxPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBoxPro.release.xcconfig"; path = "Pods/Target Support Files/Pods-EBoxPro/Pods-EBoxPro.release.xcconfig"; sourceTree = "<group>"; };
 		D665645A8003D42C451B5248 /* Pods-EBoxPro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBoxPro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EBoxPro/Pods-EBoxPro.debug.xcconfig"; sourceTree = "<group>"; };
+		DE2A077E1B1F0DC4003875A0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DE2A077F1B1F0DC4003875A0 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DEDA7EA11B19A698007157E0 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		DEDA7EA21B19A698007157E0 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		DEDA7EA41B19DDB0007157E0 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		DEF557011B174DFF009DD98F /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE2A077E1B1F0DC4003875A0 /* icon.png */,
+				DE2A077F1B1F0DC4003875A0 /* icon@2x.png */,
 				DEE2A0441B18871F00C31DDA /* local-50.png */,
 				DEE3486B1B1AECE800C39DF8 /* local_file-50.png */,
 				DEE2A0421B18869400C31DDA /* cloud-50.png */,
@@ -314,9 +320,11 @@
 				DEE0C2A91B1162E5007384B5 /* Images.xcassets in Resources */,
 				DEF557051B174E7C009DD98F /* upload-32.png in Resources */,
 				DEE3486C1B1AECE800C39DF8 /* local_file-50.png in Resources */,
+				DE2A07801B1F0DC4003875A0 /* icon.png in Resources */,
 				DEF557071B174EC9009DD98F /* upload-50.png in Resources */,
 				DEE2A0451B18871F00C31DDA /* local-50.png in Resources */,
 				DEE2A0431B18869400C31DDA /* cloud-50.png in Resources */,
+				DE2A07811B1F0DC4003875A0 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
