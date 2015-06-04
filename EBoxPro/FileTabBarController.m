@@ -22,13 +22,23 @@
 
 - (void)uploadFile:(NSString *)theFileUrl
 {
-    NSString * fileName = [theFileUrl componentsSeparatedByString:@"/"].lastObject;
-    
     NSString * fileType = [theFileUrl componentsSeparatedByString:@"."].lastObject;
     
     if ([fileType isEqualToString:@"txt"] || [fileType isEqualToString:@"TXT"]) {
-        //        NSString * fileContent = [NSString stringWithContentsOfFile:theFileUrl usedEncoding:NSUTF8StringEncoding error:nil];
         NSData * fileData = [NSData dataWithContentsOfFile:theFileUrl];
+        
+        if (!fileData) {
+            theFileUrl= [NSString stringWithString:[theFileUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            
+            fileData = [NSData dataWithContentsOfFile:theFileUrl];
+            
+            if (!fileData) {
+                alert(@"文件传输出错");
+                return;
+            }
+        }
+        
+        NSString * fileName = [theFileUrl componentsSeparatedByString:@"/"].lastObject;
         
         [self uploadFile:fileData name:fileName];
     }

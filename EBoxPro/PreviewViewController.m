@@ -56,7 +56,7 @@
     }
     
     if ([self.mainFile.fileType isEqualToString:@"txt"]) {
-        self.mainTextView.text = [[NSString alloc] initWithData:self.mainFile.fileContent encoding:NSUTF8StringEncoding];
+        self.mainTextView.text = [[NSString alloc] initWithData:self.mainFile.fileContent encoding:NSUnicodeStringEncoding];
         [self.view addSubview:self.mainTextView];
     }
 }
