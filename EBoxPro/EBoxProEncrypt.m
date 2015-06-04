@@ -24,25 +24,29 @@
     ex_length = PERCENTAGE;
     
     int fileHeaderLength = 0;
+    int fileTailLength = 0;
     int locationStepLength = 0;
+    int fillBackByte = 1;
     NSArray *JPEGS =  @[@"jfi", @"jif", @"jfif", @"jpe", @"jpeg", @"jpg",@"JPG",@"JPEG"];
     NSArray *TEXT = @[@"txt", @"c", @"h", @"cpp", @"java", @"py", @"m"];
     if([JPEGS containsObject:fileSuffix]){
         fileHeaderLength = 16;
         locationStepLength = 250;
+        fileTailLength = 2;
     }
     else if([TEXT containsObject:fileSuffix]){
         fileHeaderLength = 0;
         locationStepLength = 100;
+        fileTailLength = 0;
     }else{
         locationStepLength = 300;
     }
     
-    for(ex_location += fileHeaderLength; ex_location+ex_length < fileData.length; ex_location += locationStepLength){
+    for(ex_location += fileHeaderLength; ex_location+ex_length < fileData.length-fileTailLength; ex_location += locationStepLength){
         [keyContainer appendData:[NSData dataWithBytes:&ex_location length:sizeof(ex_location)]];
         [keyContainer appendData:[NSData dataWithBytes:&ex_length length:sizeof(ex_length)]];
         [keyContainer appendData:[fileData subdataWithRange:NSMakeRange(ex_location, ex_length)]];
-        [afterFile resetBytesInRange:NSMakeRange(ex_location, ex_length)];
+        [afterFile replaceBytesInRange:NSMakeRange(ex_location, ex_length) withBytes:&fillBackByte];
         
     }
     
