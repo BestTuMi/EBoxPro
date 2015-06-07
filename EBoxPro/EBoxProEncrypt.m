@@ -46,6 +46,7 @@
         [keyContainer appendData:[NSData dataWithBytes:&ex_location length:sizeof(ex_location)]];
         [keyContainer appendData:[NSData dataWithBytes:&ex_length length:sizeof(ex_length)]];
         [keyContainer appendData:[fileData subdataWithRange:NSMakeRange(ex_location, ex_length)]];
+        fillBackByte = arc4random() % 256;
         [afterFile replaceBytesInRange:NSMakeRange(ex_location, ex_length) withBytes:&fillBackByte];
         
     }
